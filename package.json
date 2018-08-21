@@ -1,6 +1,6 @@
 {
   "name": "ghost-qcloud-cos-store",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ghost QCloud(TencentYun) storage module",
   "main": "index.js",
   "scripts": {

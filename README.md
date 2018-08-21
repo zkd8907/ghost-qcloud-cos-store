@@ -8,6 +8,23 @@ This module works well with 1.x. I haven't test it on 0.x. If you have any probl
 
 ## Installation
 
+### Via NPM
+
+- Install `ghost-qcloud-cos-store`
+
+  ```
+  npm install ghost-qcloud-cos-store
+  ```
+
+- Go to `ghost/content/adapters/sotrage`. If `content` folder is empty, create the folders first.
+
+- Create a file named `qcloud-cos-store` with the content blow:
+
+  ```javascript
+  module.exports = require('ghost-qcloud-cos-store');
+  ```
+
+
 ### Via Git
 
 - Go to `ghost/content/adapters/storage`. If `content` folder is empty, create the folders first.
@@ -48,7 +65,7 @@ Edit `ghost/config.production.json` and add a new `storage` key to specify the c
 
 All the keys are necessary except `staticDomain`.
 
-The value of `active` must be the same with the name of the folder in `ghost/content/adapters/storage`. You can find your Bucket Name, Appid, SecureId and SecureKey at [your console](https://console.cloud.tencent.com/cos/secret) of QCloud. The all regions are listed at https://cloud.tencent.com/document/product/436/6224.
+The value of `active` must be the same with the name of the file(Via NPM) or the folder(Via Git) in `ghost/content/adapters/storage`. You can find your Bucket Name, Appid, SecureId and SecureKey at [your console](https://console.cloud.tencent.com/cos/secret) of QCloud. The all regions are listed at https://cloud.tencent.com/document/product/436/6224.
 
 `staticDomain` is optional. Normally, you need to specify a CDN domain to visit the full URL starts with http or https.
 ## License
