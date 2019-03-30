@@ -16,9 +16,9 @@ This module works well with 1.x. I haven't test it on 0.x. If you have any probl
   npm install ghost-qcloud-cos-store
   ```
 
-- Go to `ghost/content/adapters/sotrage`. If `content` folder is empty, create the folders first.
+- Go to `ghost/content/adapters/storage`. If `content` folder is empty, create the folders first.
 
-- Create a file named `qcloud-cos-store` with the content blow:
+- Create a file named `qcloud-cos-store.js` with the content blow:
 
   ```javascript
   module.exports = require('ghost-qcloud-cos-store');

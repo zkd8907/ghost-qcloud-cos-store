@@ -3,13 +3,12 @@
  * @author Bobby(zkd8907@live.com)
  * The document of Ghost Cutstom Storage Moudle @see https://docs.ghost.org/docs/using-a-custom-storage-module
  */
-
-'use strict';
-
 const QCloudCOS = require('cos-nodejs-sdk-v5');
 const GhostStorageBase = require('ghost-storage-base');
 const fs = require('fs');
-const { promisify } = require('util');
+const {
+    promisify
+} = require('util');
 const path = require('path');
 
 const statAsync = promisify(fs.stat);
@@ -30,7 +29,7 @@ class QCloudCOSAdapter extends GhostStorageBase {
      * @param {string=} targetDir a path to where to store the image.
      * @return {Promise<string>} A promise which resolves the full URI of the image.
      */
-    async save (image, targetDir = this.getTargetDir('/')) {
+    async save(image, targetDir = this.getTargetDir('/')) {
         const config = this.config;
 
         try {
@@ -67,7 +66,7 @@ class QCloudCOSAdapter extends GhostStorageBase {
      * @param {string=} targetDir the target dir of the file name. This is optional, ensure you first check if a custom dir was passed, otherwise fallback to the default dir/location of files.
      * @return {Promise<boolean>} A promise which resolves to true or false depending on whether or not the given image has already been stored.
      */
-    exists (filename, targetDir = this.getTargetDir('/')) {
+    exists(filename, targetDir = this.getTargetDir('/')) {
         const config = this.config;
         return new Promise((resolve) => {
             this.cos.headObject({
@@ -80,18 +79,18 @@ class QCloudCOSAdapter extends GhostStorageBase {
                 } else {
                     resolve(true);
                 }
-            })
+            });
         });
     }
 
     /**
      * Returns a fucntion as the middleware for serving images.
-     * @description 
+     * @description
      */
-    serve () {
+    serve() {
         return function (req, res, next) {
             next();
-        }
+        };
     }
 
     /**
@@ -100,7 +99,7 @@ class QCloudCOSAdapter extends GhostStorageBase {
      * @param {string=} targetDir the target dir of the file name. This is optional, ensure you first check if a custom dir was passed, otherwise fallback to the default dir/location of files.
      * @return {Promise<boolean>} A promise which resolves to true or false depending on whether or not the given image has already been stored.
      */
-    delete (filename, targetDir = this.getTargetDir('/')) {
+    delete(filename, targetDir = this.getTargetDir('/')) {
         const config = this.config;
         return new Promise((resolve, reject) => {
             this.cos.deleteObject({
@@ -113,7 +112,7 @@ class QCloudCOSAdapter extends GhostStorageBase {
                 } else {
                     resolve(true);
                 }
-            })
+            });
         });
     }
 
@@ -121,7 +120,7 @@ class QCloudCOSAdapter extends GhostStorageBase {
      * Read bytes from QCloud COS for specified image.
      * @param {object} options An object including the information of the image.
      */
-    read (options) {
+    read(options) {
         console.warn(`read is not implemented. ${options}`);
         return Promise.reject(new Error('Not Implemented.'));
     }
